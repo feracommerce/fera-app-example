@@ -3,7 +3,7 @@ An working Fera Rails App example to help you get started with our partner app d
 
 To learn more about our APIs visit https://developers.fera.ai
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/feracommerce/fera-rails-app-example)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/feracommerce/fera-app-example)
 
 # Developer Setup
 Here's how to get the app running on your local computer for development.
