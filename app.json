@@ -1,0 +1,33 @@
+{
+  "name": "Fera App Example",
+  "description": "A quick template to launch a Fera App using a Rails template for Fera partners.",
+  "website": "https://developers.fera,ai",
+  "logo": "https://s3.amazonaws.com/uploads.fera.ai/brand/icon-padded.png",
+  "repository": "https://github.com/feracommerce/fera-rails-app-example",
+  "keywords": ["fera", "reviews", "ruby", "railse", "shopify"],
+  "addons": [
+    "heroku-postgresql:hobby-dev"
+  ],
+  "stack": "heroku-20",
+  "env": {
+    "APP_CODE": {
+      "description": "App code from https://partners.fera.ai/apps",
+      "required": true
+    },
+    "FERA_CLIENT_ID": {
+      "description": "Your client ID from https://partners.fera.ai/apps/APP_CODE?tab=setup",
+      "required": true
+    },
+    "FERA_CLIENT_SECRET": {
+      "description": "Your client secret from https://partners.fera.ai/apps/APP_CODE?tab=setup",
+      "required": true
+    },
+    "BASE_APP_URL": {
+      "description": "The URL to this app. It should be something like https://HEROKU_APP_NAME.herokuapp.com",
+      "required": true
+    }
+  },
+  "scripts": {
+    "postdeploy": "bin/setup"
+  }
+}

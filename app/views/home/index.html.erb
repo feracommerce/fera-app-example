@@ -1,0 +1,21 @@
+<h1><%= ENV.fetch("APP_TITLE", "Example Fera App") %></h1>
+<p>This is a simple example of a Fera App that connects to Fera accounts and shows reviews.</p>
+
+<% if @store.try(:connected_to_fera?) %>
+  <p>Huzzah! Your store is now connected to this app.</p>
+  <p>
+    Your store's reviews:
+  </p>
+  <ul>
+    <% Fera::Review.all.to_a.each do |review| %>
+      <li><%= review.customer.display_name %> Rated <%= review.rating %>/5</li>
+    <% end %>
+  </ul>
+  <p>
+    <a href="/fera/auth/disconnect">Disconnect</a>
+  </p>
+<% else %>
+  <p>Not Connected</p>
+
+  <p><b><a href="/auth/fera">Connect to Fera Now</a></b></p>
+<% end %>

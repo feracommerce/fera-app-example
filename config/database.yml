@@ -1,0 +1,26 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= (ENV["DB_POOL"].presence || ENV['PUMA_MAX_THREADS'].presence || 5).to_i %>
+
+development:
+  <<: *default
+  database: <%= ENV['DATABASE_NAME'] || "fera_#{ ENV['APP_CODE'] }" %>
+  password: <%= ENV['DATABASE_PASSWORD'] || '' %>
+  host: <%= ENV['DATABASE_HOST'] || '127.0.0.1' %>
+  username: <%= ENV['DATABASE_USERNAME'] || '' %>
+
+test:
+  <<: *default
+  database: <%= (ENV['DATABASE_NAME'] || "fera_#{ ENV['APP_CODE'] }") + '_test' + ENV['TEST_ENV_NUMBER'].to_s %>
+  password: <%= ENV['DATABASE_PASSWORD'] || '' %>
+  host: <%= ENV['DATABASE_HOST'] || '127.0.0.1' %>
+  username: <%= ENV['DATABASE_USERNAME'] || '' %>
+
+staging:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'].present? ? "#{ENV['DATABASE_URL']}?prepared_statements=false" : '' %>
+
+production:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'].present? ? "#{ENV['DATABASE_URL']}?prepared_statements=false" : '' %>

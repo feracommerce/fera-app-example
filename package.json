@@ -1,0 +1,14 @@
+{
+  "name": "fera-omnisend",
+  "private": true,
+  "dependencies": {
+    "esbuild": "^0.14.51",
+    "sass": "^1.54.0"
+  },
+  "scripts": {
+    "build:js": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
+    "build:css": "sass ./app/assets/stylesheets/application.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
+    "build": "yarn build:js && yarn build:css",
+    "dev": "source .env && bundle exec foreman start -f Procfile.dev"
+  }
+}
